@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfiekvr22kbdm"]
+
+[ext_resource type="Script" uid="uid://bvgk67fc5tdck" path="res://scenes/ui/screens/start_screen.gd" id="1_bybwl"]
+[ext_resource type="Texture2D" uid="uid://bxwmo7cyp8gyv" path="res://assets/ui/placeholder_splash.png" id="1_eh51a"]
+[ext_resource type="Texture2D" uid="uid://b1joor7fs2wg5" path="res://assets/ui/start_button_up.png" id="1_xgb5i"]
+[ext_resource type="Texture2D" uid="uid://qien3mthr71h" path="res://assets/ui/start_button_down.png" id="2_eh51a"]
+[ext_resource type="Texture2D" uid="uid://bpl3bq0egtof" path="res://assets/ui/start_button_over.png" id="5_7twpm"]
+
+[node name="StartScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bybwl")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_eh51a")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -295.0
+offset_top = -117.0
+offset_right = -28.0
+offset_bottom = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("1_xgb5i")
+texture_pressed = ExtResource("2_eh51a")
+texture_hover = ExtResource("5_7twpm")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
