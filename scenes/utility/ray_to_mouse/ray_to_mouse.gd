@@ -6,7 +6,7 @@ var last_mouse_pos: Vector2
 
 func _draw():
 	var parent = get_parent() as Node2D
-	if parent == null:
+	if parent == null or last_mouse_pos == null:
 		return
 	var parent_pos = parent.global_position
 	var delta_pos = last_mouse_pos - parent_pos
