@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bk23swktxw4ub"]
+
+[ext_resource type="Script" uid="uid://ct6ykl554oeqa" path="res://scenes/utility/ray_to_mouse/ray_to_mouse.gd" id="1_bnl4f"]
+
+[node name="RayToMouse" type="Node2D"]
+top_level = true
+script = ExtResource("1_bnl4f")
