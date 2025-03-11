@@ -10,7 +10,6 @@ func _draw():
 		return
 	var parent_pos = parent.global_position
 	var delta_pos = last_mouse_pos - parent_pos
-	print('parent: ', parent_pos, ', delta: ', delta_pos)
 	var line_vector = delta_pos.normalized() * RAY_LENGTH
 	draw_line(parent_pos, parent_pos + line_vector, Color.AQUAMARINE, 1, false)
 	
