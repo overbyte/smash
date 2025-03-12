@@ -347,9 +347,11 @@ blend_point_0/pos = Vector2(0, 1)
 blend_point_1/node = SubResource("AnimationNodeAnimation_rix40")
 blend_point_1/pos = Vector2(0, -1)
 blend_point_2/node = SubResource("AnimationNodeAnimation_ss5pk")
-blend_point_2/pos = Vector2(-1, 0.1)
+blend_point_2/pos = Vector2(-1.1, 0)
 blend_point_3/node = SubResource("AnimationNodeAnimation_pknkg")
-blend_point_3/pos = Vector2(1, 0.1)
+blend_point_3/pos = Vector2(1.1, 0)
+min_space = Vector2(-1.1, -1)
+max_space = Vector2(1.1, 1)
 snap = Vector2(0.01, 0.01)
 blend_mode = 1
 
@@ -367,13 +369,15 @@ animation = &"walk_up"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_gqr5v"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_dy4tu")
-blend_point_0/pos = Vector2(-1, 0.1)
+blend_point_0/pos = Vector2(-1.1, 0)
 blend_point_1/node = SubResource("AnimationNodeAnimation_gqr5v")
 blend_point_1/pos = Vector2(0.000429754, 0.992956)
 blend_point_2/node = SubResource("AnimationNodeAnimation_28lpv")
-blend_point_2/pos = Vector2(1, 0.1)
+blend_point_2/pos = Vector2(1.1, 0)
 blend_point_3/node = SubResource("AnimationNodeAnimation_gbew5")
 blend_point_3/pos = Vector2(0, -1)
+min_space = Vector2(-1.1, -1)
+max_space = Vector2(1.1, 1)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_28lpv"]
@@ -416,7 +420,7 @@ texture = ExtResource("2_m87up")
 flip_h = true
 hframes = 6
 vframes = 10
-frame = 3
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7)
@@ -430,5 +434,5 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_ss5pk")
 anim_player = NodePath("../AnimationPlayer")
-parameters/Idle/blend_position = Vector2(0, 0)
+parameters/Idle/blend_position = Vector2(-0.00115085, 0.00424492)
 parameters/Walk/blend_position = Vector2(4.30346e-05, -0.000496745)
