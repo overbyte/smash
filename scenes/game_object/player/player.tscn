@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1k1rpau48s6h"]
+[gd_scene load_steps=7 format=3 uid="uid://b1k1rpau48s6h"]
 
 [ext_resource type="Script" uid="uid://bdcvnv0qyafuv" path="res://scenes/game_object/player/player.gd" id="1_lmuw1"]
 [ext_resource type="Texture2D" uid="uid://cca84rugpq2ju" path="res://scenes/game_object/player/player.png" id="2_m87up"]
 [ext_resource type="PackedScene" uid="uid://bk23swktxw4ub" path="res://scenes/utility/ray_to_mouse/ray_to_mouse.tscn" id="2_s3670"]
+[ext_resource type="PackedScene" uid="uid://drav8iqfss7u5" path="res://scenes/ability/shooting/shooting.tscn" id="2_ss5pk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ce60"]
 radius = 32.0
@@ -17,7 +18,11 @@ motion_mode = 1
 script = ExtResource("1_lmuw1")
 metadata/_edit_vertical_guides_ = [-117.0]
 
+[node name="Shooting" parent="." instance=ExtResource("2_ss5pk")]
+position = Vector2(0, -4)
+
 [node name="RayToMouse" parent="." instance=ExtResource("2_s3670")]
+position = Vector2(0, -5)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 16

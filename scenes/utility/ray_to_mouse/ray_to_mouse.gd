@@ -13,7 +13,7 @@ func _draw():
 	var line_vector = delta_pos.normalized() * RAY_LENGTH
 	draw_line(parent_pos, parent_pos + line_vector, Color.AQUAMARINE, 1, false)
 	
-func _process(delta):	
+func _process(_delta):	
 	draw_ray_to_mouse()
 	
 func draw_ray_to_mouse():
