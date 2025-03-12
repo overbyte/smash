@@ -1,22 +1,34 @@
 extends CharacterBody2D
 
-const MAX_SPEED = 200
-const ACCELERATION_SMOOTHING = 25
+@export var acceleration = 800
+@export var friction = 500
+@export var max_speed = 200
+@export var starting_direction : Vector2 = Vector2(0, 1)
 
-# Called when the node enters the scene tree for the first time.
+@onready var animation_tree = $AnimationTree
+@onready var state_machine = animation_tree.get("parameters/playback")
+
 func _ready():
-	pass # Replace with function body.
+	update_animation_parameters(starting_direction)
+	animation_tree.set('parameters/Idle/blend_position', starting_direction)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	var movement_vector = get_movement_vector()
-	# normalize to ensure max length is 1
-	var direction = movement_vector.normalized()
-	var target_velocity = MAX_SPEED * direction
-	velocity = velocity.lerp(target_velocity, 1 - exp(-delta * ACCELERATION_SMOOTHING))
+func _physics_process(delta):
+	var input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	update_animation_parameters(input_vector)
+	if input_vector != Vector2.ZERO:
+		velocity = velocity.move_toward(input_vector * max_speed, acceleration * delta)
+	else:
+		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
+	update_animation_state()
 	move_and_slide()
 
-func get_movement_vector():
-	var x_movement = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	var y_movement = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
-	return Vector2(x_movement, y_movement)
+func update_animation_parameters(move_input : Vector2):
+	if (move_input != Vector2.ZERO):
+		animation_tree.set("parameters/Idle/blend_position", move_input)
+		animation_tree.set("parameters/Walk/blend_position", move_input)
+
+func update_animation_state():
+	if velocity != Vector2.ZERO:
+		state_machine.travel("Walk")
+	else:
+		state_machine.travel("Idle")
